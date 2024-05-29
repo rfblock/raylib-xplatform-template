@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "util/util.h"
 
 int main(void)
 {
@@ -10,6 +11,8 @@ int main(void)
 
 	// Image raylibImg = LoadImage("../res/raylib.png");
 	Texture2D raylibTex = LoadTexture("../res/raylib.png");
+
+	exampleFunction();
 
 	while(!WindowShouldClose()) {
 		int width = GetRenderWidth();
