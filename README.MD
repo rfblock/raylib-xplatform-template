@@ -11,12 +11,22 @@ This is a basic template for raylib projects that compiles to multiple platforms
 | Android       | Untested       | Unsupported    |
 
 ## Using the template
-### First time setup
-Clone the template
+
+### Method 1 (Preferred): Github template
+To create a repository on GitHub from a template, see [this link](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template)
+
+### Method 2: Cloning
+Clone the template, with submodules
 
 ```
-git clone --recurse-submodules https://github.com/rfblock/raylib-xplatform-template.git
-cd raylib-xplatform-template/src
+REPO_NAME=<name>
+&& git clone --recurse-submodules https://github.com/rfblock/raylib-xplatform-template.git $REPO_NAME
+&& cd $REPO_NAME/src
+```
+
+Remove remote origin
+```
+git remote remove origin
 ```
 
 Build raylib

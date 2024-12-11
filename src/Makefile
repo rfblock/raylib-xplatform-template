@@ -52,7 +52,7 @@ $(LIBRAYLIB): | $(LIB_DIR)
 	cp $(DEPS_DIR)/raylib/src/raylib.h $(LIB_DIR)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	mkdir $(dir $@)
+	mkdir -p $(dir $@)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(LIB_DIR) $(OBJ_DIR) $(BUILD_DIR):
