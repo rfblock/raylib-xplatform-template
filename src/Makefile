@@ -34,7 +34,15 @@ ifeq ($(HOST_PLATFORM),windows)
 	CFLAGS += -lopengl32 -lgdi32 -lwinmm
 endif
 
-.PHONY: run raylib clean cleanall
+.PHONY: help run raylib clean cleanall
+
+help:
+	@echo "make <command>"
+	@echo " - help: This message"
+	@echo " - run: Build and run"
+	@echo " - raylib: Build raylib (requires rebuilding when switching between OS's)"
+	@echo " - clean: Remove objects"
+	@echo " - clean: Remove objects and builds"
 
 main: $(OBJS) | $(OBJ_DIR) $(BUILD_DIR)
 	@echo $(SRCS)
@@ -59,8 +67,7 @@ $(LIB_DIR) $(OBJ_DIR) $(BUILD_DIR):
 	mkdir -p $@
 
 clean:
-	$(RM) $(OBJ_DIR_PARENT)
+	$(RM) -r $(OBJ_DIR_PARENT)
 
-cleanall:
-	$(RM) $(OBJ_DIR_PARENT)
-	$(RM) $(BUILD_DIR_PARENT)
+cleanall: clean
+	$(RM) -r $(BUILD_DIR_PARENT)
