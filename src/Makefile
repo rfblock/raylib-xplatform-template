@@ -16,7 +16,7 @@ BUILD_DIR_PARENT := ../build
 
 OBJ_DIR   := $(OBJ_DIR_PARENT)/$(HOST_PLATFORM)
 BUILD_DIR := $(BUILD_DIR_PARENT)/$(HOST_PLATFORM)
-LIB_DIR   := ../lib
+LIB_DIR   := ../lib/$(HOST_PLATFORM)
 DEPS_DIR  := ../deps
 
 SRCS := $(shell find . -name "*.c")
@@ -24,7 +24,7 @@ OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 ABS_LIB_DIR := $(realpath $(LIB_DIR))
 
-LIBRAYLIB := libraylib.$(HOST_PLATFORM).a
+LIBRAYLIB := libraylib.a
 
 CC := gcc
 
@@ -56,7 +56,7 @@ raylib: $(LIBRAYLIB)
 $(LIBRAYLIB): | $(LIB_DIR)
 # raylib needs to be cleaned when recompiling for a different OS
 	$(MAKE) -C $(DEPS_DIR)/raylib/src clean
-	$(MAKE) -C $(DEPS_DIR)/raylib/src PLATFORM=$(PLATFORM) RAYLIB_RELEASE_PATH=$(ABS_LIB_DIR) RAYLIB_LIB_NAME=raylib.$(HOST_PLATFORM)
+	$(MAKE) -C $(DEPS_DIR)/raylib/src PLATFORM=$(PLATFORM) RAYLIB_RELEASE_PATH=$(ABS_LIB_DIR)
 	cp $(DEPS_DIR)/raylib/src/raylib.h $(LIB_DIR)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
